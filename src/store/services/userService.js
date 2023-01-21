@@ -4,10 +4,10 @@ const userApi = createApi({
   reducerPath: "userApi",
   tagTypes: ["User"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
+    baseUrl: `${process.env.REACT_APP_SERVER_HOST}/api`,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
-      headers.set("API-KEY",  process.env.REACT_APP_API_KEY);
+      headers.set("API-KEY", process.env.REACT_APP_API_KEY);
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }

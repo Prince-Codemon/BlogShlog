@@ -3,7 +3,7 @@ export const blogApi = createApi({
   reducerPath: "blogApi",
   tagTypes: ["Blog"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
+    baseUrl: `${process.env.REACT_APP_SERVER_HOST}/api`,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       headers.set("API-KEY", process.env.REACT_APP_API_KEY);
@@ -27,9 +27,8 @@ export const blogApi = createApi({
         method: "GET",
       }),
       providesTags: ["Blog"],
-
     }),
-    getUserBlogs : builder.query({
+    getUserBlogs: builder.query({
       query: (id) => ({
         url: `/userblogs/${id}`,
         method: "GET",
@@ -65,7 +64,7 @@ export const blogApi = createApi({
         method: "GET",
       }),
       providesTags: ["Blog"],
-    })
+    }),
   }),
 });
 
