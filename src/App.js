@@ -85,7 +85,7 @@ function App() {
           <Route path="verify-email/:id" element={<VerifyEmail />} />
         </Route>
         {/* user routes */}
-        <Route path="user">
+        <Route path="/user">
           <Route
             path="profile"
             element={
@@ -104,7 +104,7 @@ function App() {
           />
         </Route>
         {/* creator routes */}
-        <Route path="creator">
+        <Route path="/creator">
           <Route
             path="createblog"
             element={
