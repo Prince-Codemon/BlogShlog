@@ -98,7 +98,8 @@ const EditBlog = () => {
     }
     if (result.error) {
         toast.error("Something went wrong");
-        toast.error(result.error.data.msg);
+        toast.error(result.error);
+        console.log(result)
     
     }
     }, [result, navigate]);
