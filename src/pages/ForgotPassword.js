@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForgotMutation } from "../store/services/userService";
 import Spinner from '../components/Spinner'
+import RHelmet from "../components/Helmet";
 const ForgotPassword = () => {
   const [forgotPassword, result] = useForgotMutation();
   
@@ -41,7 +42,7 @@ const ForgotPassword = () => {
 
   return (
     <section className="text-gray-600 body-font">
-      
+      <RHelmet title="Forgot Password" />
         <div className="container px-3 md:px-5  mx-auto flex items-center justify-center my-20">
           <form
             onSubmit={handleSubmit}

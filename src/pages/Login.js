@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Spinner from '../components/Spinner'
 import { loginUser } from "../store/slice/userSlice";
 import { useDispatch } from "react-redux";
+import RHelmet from "../components/Helmet";
 const Login = () => {
   
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const Login = () => {
 
   return (
     <section className="text-gray-600 body-font">
+      <RHelmet title="Login" />
       <div className="container px-3 md:px-5 mx-auto flex items-center justify-center my-20">
         <form
           onSubmit={handleSubmit}

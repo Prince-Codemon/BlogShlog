@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import RHelmet from '../components/Helmet';
 
 const NFPage = () => {
   return (
     <section className="flex items-center h-5/6 p-16  dark:text-gray-100">
+      <RHelmet title="404" />
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
         <div className="max-w-md text-center">
           <h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">

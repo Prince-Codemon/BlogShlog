@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import {  useGetUserQuery } from "../store/services/userService";
 import Spinner from "../components/Spinner";
 import { useGetUserBlogsQuery } from "../store/services/blogService";
+import RHelmet from "../components/Helmet";
 
 const Profile = () => {
   const {token, type, user } = useSelector(state=>state.user)
@@ -12,6 +13,7 @@ const Profile = () => {
   const {data:blogs} = useGetUserBlogsQuery(user)
   return (
     <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center">
+      <RHelmet title="Profile" />
       <div className="w-full md:max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
       {
         data?.user ? (  <div className="flex flex-col items-center pb-10 mt-10">

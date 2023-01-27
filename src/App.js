@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route  } from "react-router-dom";
 import Blogs from "./pages/Blogs";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -18,16 +18,16 @@ import { Creator, NotLogin, User } from "./Routes";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetUserFunctionMutation } from "./store/services/userService";
-import { type } from "./store/slice/userSlice";
+import { type, logout } from "./store/slice/userSlice";
 import VerifyEmail from "./pages/VerifyEmail";
 import EditBlog from "./pages/EditBlog";
 import UserProfile from "./pages/UserProfile";
 import ForgortPage from "./pages/ForgotPage";
+import RHelmet from "./components/Helmet";
 function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const [getuser, result] = useGetUserFunctionMutation();
-
   useEffect(() => {
     if (user) {
       getuser(user);
@@ -37,10 +37,15 @@ function App() {
     if (result.data) {
       dispatch(type(result.data.user.type));
     }
-  }, [result.data, dispatch]);
+    if(result?.error?.status === 400){
+      dispatch(logout())
+    
+    }
+  }, [result, dispatch]);
 
   return (
     <>
+    <RHelmet title="Home" />
       <Navbar />
       <ToastContainer />
       <Routes>
@@ -78,11 +83,12 @@ function App() {
             path="reset-password/:token"
             element={
               <NotLogin>
-                <ForgortPage/>
+                <ForgortPage />
               </NotLogin>
             }
           />
           <Route path="verify-email/:id" element={<VerifyEmail />} />
+          <Route element={<NFPage />} />
         </Route>
         {/* user routes */}
         <Route path="/user">
@@ -102,6 +108,7 @@ function App() {
               </User>
             }
           />
+          <Route path="*" element={<NFPage />} />
         </Route>
         {/* creator routes */}
         <Route path="/creator">

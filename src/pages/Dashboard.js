@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import RHelmet from "../components/Helmet";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="relative overflow-x-auto shadow-md  bg-gray-800 ">
+        <RHelmet title="Dashboard" />
         <div className="flex items-start md:items-center justify-between py-4 bg-white dark:bg-gray-800 p-2 flex-col md:flex-row ">
           <div className="flex justify-between items-center w-full md:w-2/6 ">
             <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">

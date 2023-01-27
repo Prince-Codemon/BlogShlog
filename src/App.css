@@ -23,3 +23,15 @@
   margin-top: 5px;
   padding-left: 16px
 }
+
+.ql-editor .ql-video{
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+
+}
+.ql-editor .ql-video img{
+  width: 10px;
+  height: 100px !important;
+  object-fit: cover;
+}

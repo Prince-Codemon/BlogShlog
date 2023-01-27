@@ -8,6 +8,7 @@ import { useResetPasswordMutation } from "../store/services/userService";
 import jwtDecode from "jwt-decode";
 import { forgotSchema } from "../schemas";
 import Spinner from "../components/Spinner";
+import RHelmet from "../components/Helmet";
 const ForgortPage = () => {
   const { token } = useParams();
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ const ForgortPage = () => {
   
   return (
     <section className="text-gray-600 body-font">
+      <RHelmet title="Reset Password" />
       <div className="container px-3 md:px-5  mx-auto flex items-center justify-center my-20">
         <form
           onSubmit={handleSubmit}

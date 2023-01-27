@@ -4,6 +4,7 @@ import Blog from "../components/Blog";
 import { useGetUserQuery } from "../store/services/userService";
 import Spinner from "../components/Spinner";
 import { useGetUserBlogsQuery } from "../store/services/blogService";
+import RHelmet from "../components/Helmet";
 const UserProfile = () => {
   window.scrollTo(0, 0);
   const { id } = useParams();
@@ -18,6 +19,7 @@ const UserProfile = () => {
 
   return (
     <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center">
+      <RHelmet title={data?.user?.username} />
       <div className="w-full max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
         {data?.user ? (
           <div className="flex flex-col items-center pb-10 mt-10">

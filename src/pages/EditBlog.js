@@ -12,6 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import formatDate from "../utils/date";
 import Spinner from "../components/Spinner";
+import RHelmet from "../components/Helmet";
 
 const toolbarOptions = [
   // custom button values
@@ -25,9 +26,8 @@ const toolbarOptions = [
   [{ color: [] }, { background: [] }], // dropdown with defaults from theme
   [{ font: [] }],
   [{ align: [] }],
-
   ["clean"], // remove formatting button
-  ["link", "image", "video"],
+  ["link", "video"],
 ];
 
 const EditBlog = () => {
@@ -40,7 +40,8 @@ const EditBlog = () => {
   const [preImg, setPreImg] = useState("");
   const [image, setImage] = useState("");
   const [update, result] = useUpdateBlogMutation();
-  const {isLoading } = result;
+  const { isLoading } = result;
+
   const updateBlog = async () => {
     const formData = new FormData();
     image && formData.append("image", image);
@@ -63,13 +64,18 @@ const EditBlog = () => {
         updateBlog();
       },
     });
-
+  
   useEffect(() => {
     setContent(data?.blog?.content);
     setPreImg(
       `${process.env.REACT_APP_SERVER_HOST}/uploads/${data?.blog?.image}`
     );
-    if (data?.blog?.title && !values.title && !values.desc && !values.category) {
+    if (
+      data?.blog?.title &&
+      !values.title &&
+      !values.desc &&
+      !values.category
+    ) {
       values.title = data?.blog?.title;
       values.desc = data?.blog?.desc;
       values.category = data?.blog?.category;
@@ -87,26 +93,27 @@ const EditBlog = () => {
         console.log("Error: ", error);
       };
     };
-   
+
     image && fileReader();
   }, [image]);
 
-    useEffect(() => {
+  useEffect(() => {
     if (result.data) {
-        toast.success("Blog updated successfully");
-        navigate("/creator/dashboard");
+      toast.success("Blog updated successfully");
+      navigate("/creator/dashboard");
     }
     if (result.error) {
-        toast.error("Something went wrong");
-        toast.error(result.error);
-        console.log(result)
-    
+      toast.error("Something went wrong");
+      toast.error(result.error);
+      
     }
-    }, [result, navigate]);
+  }, [result, navigate]);
 
+  
 
   return (
     <section className="flex  items-start justify-start py-10 px-20">
+      <RHelmet title="Edit Blog" />
       {data?.blog ? (
         <>
           <div className="flex w-1/2  flex-col items-start justify-start ">
@@ -230,9 +237,7 @@ const EditBlog = () => {
                 type="submit"
                 className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               >
-                {
-                  isLoading ? <Spinner/> : "Update"
-                }
+                {isLoading ? <Spinner /> : "Update"}
               </button>
             </form>
           </div>

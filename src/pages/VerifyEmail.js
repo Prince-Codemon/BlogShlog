@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useVerifyEmailMutation } from "../store/services/userService";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import RHelmet from "../components/Helmet";
 
 const VerifyEmail = () => {
   const navigate = useNavigate();
@@ -28,7 +29,9 @@ const VerifyEmail = () => {
     return <Spinner />;
   }
 
-  return <div>VerifyEmail</div>;
+  return <div>
+    <RHelmet title="Verify Email" />
+    VerifyEmail</div>;
 };
 
 export default VerifyEmail;

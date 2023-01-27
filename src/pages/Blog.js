@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ReactQuill from "react-quill";
 import { Link, useParams } from "react-router-dom";
+import RHelmet from "../components/Helmet";
 import Spinner from "../components/Spinner";
 import { useGetBlogQuery } from "../store/services/blogService";
 import { useGetUserFunctionMutation } from "../store/services/userService";
@@ -10,7 +11,7 @@ const Blog = () => {
   window.scrollTo(0, 0);
   const { id } = useParams();
   const { data, isFetching } = useGetBlogQuery(id);
-  const { title, content, image, createdAt, creator } = data?.blog || {};
+  const { title, content, image, createdAt, creator, desc } = data?.blog || {};
   const [getUser, result] = useGetUserFunctionMutation();
   const { data: userData } = result;
 
@@ -22,6 +23,7 @@ const Blog = () => {
 
   return (
     <section className="text-gray-600 body-font">
+      <RHelmet title={title} content={desc} />
       {isFetching ? (
         <Spinner />
       ) : (

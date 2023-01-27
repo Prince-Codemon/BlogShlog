@@ -7,6 +7,7 @@ import { useCreateBlogMutation,useGetCategoriesQuery } from "../store/services/b
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import RHelmet from "../components/Helmet";
 const toolbarOptions = [
   // custom button values
   [{ size: ["small", false, "large", "huge"] }],
@@ -19,9 +20,8 @@ const toolbarOptions = [
   [{ color: [] }, { background: [] }], // dropdown with defaults from theme
   [{ font: [] }],
   [{ align: [] }],
-
   ["clean"], // remove formatting button
-  ["link", "image", "video"],
+  ["link", "video"],
 ];
 
 const CreateBlog = () => {
@@ -88,6 +88,7 @@ const CreateBlog = () => {
 
   return (
     <section className="flex  items-start justify-start py-10 px-20">
+      <RHelmet title="Create Blog" />
       <div className="flex w-1/2  flex-col items-start justify-start ">
         <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center mb-2">
           Write Content
