@@ -8,6 +8,7 @@ import {
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import RHelmet from "../components/Helmet";
+import ProfileSkelton from "../components/ProfileSkelton";
 const EditProfile = () => {
   const { user } = useSelector((state) => state.user);
   const [userInfo, setUserInfo] = useState({});
@@ -183,7 +184,7 @@ const EditProfile = () => {
             </div>
           </form>
         ) : (
-          <Spinner />
+          <ProfileSkelton/>
         )}
       </div>
     </div>

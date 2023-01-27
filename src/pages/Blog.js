@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ReactQuill from "react-quill";
 import { Link, useParams } from "react-router-dom";
 import RHelmet from "../components/Helmet";
-import Spinner from "../components/Spinner";
+import BlogSkelton from '../components/BlogSkelton'
 import { useGetBlogQuery } from "../store/services/blogService";
 import { useGetUserFunctionMutation } from "../store/services/userService";
 import formatDate from "../utils/date";
@@ -27,7 +27,7 @@ const Blog = () => {
 title && <RHelmet title={title} content={desc} />
       }
       {isFetching ? (
-        <Spinner />
+        <BlogSkelton/>
       ) : (
         <div className="container mx-auto flex flex-col px-5 py-20 justify-center items-center">
           <img

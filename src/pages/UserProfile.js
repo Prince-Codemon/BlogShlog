@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Blog from "../components/Blog";
 import { useGetUserQuery } from "../store/services/userService";
-import Spinner from "../components/Spinner";
+import ProfileSkelton from '../components/ProfileSkelton'
 import { useGetUserBlogsQuery } from "../store/services/blogService";
 import RHelmet from "../components/Helmet";
 const UserProfile = () => {
@@ -49,7 +49,7 @@ const UserProfile = () => {
             </a>
           </div>
         ) : (
-          <Spinner />
+          <ProfileSkelton/>
         )}
       </div>
       {blogs.length > 0 && (
