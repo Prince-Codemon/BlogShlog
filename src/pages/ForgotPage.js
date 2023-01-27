@@ -31,7 +31,6 @@ const ForgortPage = () => {
       },
       validationSchema: forgotSchema,
       onSubmit: (values) => {
-        console.log(values);
         resetPassword({ password:values.password, id: decoded.id});
       },
     });
@@ -45,7 +44,7 @@ const ForgortPage = () => {
     }
   }, [data, error, navigate]);
 
-  console.log(result);
+  
   
   return (
     <section className="text-gray-600 body-font">

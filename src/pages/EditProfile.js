@@ -68,7 +68,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error)
+      toast.error(error?.data?.msg)
     }
     if (isSuccess) {
       toast.success("Profile Updated Successfully")
@@ -76,6 +76,7 @@ const EditProfile = () => {
     }
 
   }, [error, isSuccess, navigate]);
+
   
   
 
