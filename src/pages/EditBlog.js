@@ -10,7 +10,6 @@ import {
 } from "../store/services/blogService";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import formatDate from "../utils/date";
 import Spinner from "../components/Spinner";
 import RHelmet from "../components/Helmet";
 
@@ -64,7 +63,7 @@ const EditBlog = () => {
         updateBlog();
       },
     });
-  
+
   useEffect(() => {
     setContent(data?.blog?.content);
     setPreImg(
@@ -105,18 +104,15 @@ const EditBlog = () => {
     if (result.error) {
       toast.error("Something went wrong");
       toast.error(result.error);
-      
     }
   }, [result, navigate]);
 
-  
-
   return (
-    <section className="flex  items-start justify-start py-10 px-20">
+    <section className="flex flex-col md:flex-row  items-start justify-start py-10 md:px-20 px-2">
       <RHelmet title="Edit Blog" />
       {data?.blog ? (
         <>
-          <div className="flex w-1/2  flex-col items-start justify-start ">
+          <div className="flex md:w-1/2 w-full  flex-col items-start justify-start my-5 ">
             <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center mb-2">
               Write Content
             </h1>
@@ -142,7 +138,7 @@ const EditBlog = () => {
                   }}
                 />
               </div>
-              <div className="relative mb-4 w-3/4">
+              <div className="relative mb-4 md:md:w-3/4 w-full w-full">
                 <label
                   htmlFor="title"
                   className="leading-7 text-sm text-gray-600"
@@ -163,7 +159,7 @@ const EditBlog = () => {
                   <p className="text-red-500 text-xs">{errors.title}</p>
                 )}
               </div>
-              <div className="relative mb-4 w-3/4">
+              <div className="relative mb-4 md:w-3/4 w-full">
                 <label
                   htmlFor="desc"
                   className="leading-7 text-sm text-gray-600"
@@ -184,7 +180,7 @@ const EditBlog = () => {
                   <p className="text-red-500 text-xs">{errors.desc}</p>
                 )}
               </div>
-              <div className="relative mb-4 w-3/4">
+              <div className="relative mb-4 md:w-3/4 w-full">
                 <label
                   htmlFor="category"
                   className="leading-7 text-sm text-gray-600"
@@ -214,7 +210,7 @@ const EditBlog = () => {
                   <p className="text-red-500 text-xs">{errors.category}</p>
                 )}
               </div>
-              <div className="relative mb-4 w-3/4">
+              <div className="relative mb-4 md:w-3/4 w-full">
                 <label
                   htmlFor="content"
                   className="leading-7 text-sm text-gray-600"
@@ -241,7 +237,7 @@ const EditBlog = () => {
               </button>
             </form>
           </div>
-          <div className="flex w-1/2 items-start justify-start">
+          <div className="flex md:w-1/2 w-full flex-col items-start justify-start">
             <h2 className="text-base bg-indigo-500 p-2 rounded text-white text-center">
               Preview
             </h2>
@@ -252,14 +248,6 @@ const EditBlog = () => {
                 src={preImg ? preImg : "https://dummyimage.com/720x600"}
               />
               <div className="w-full md:w-2/3 flex flex-col mb-16 blog">
-                <div className="w-full flex justify-between items-center">
-                  <h2 className="text-sm text-indigo-500 tracking-widest font-medium title-font mb-1">
-                    {data?.blog?.creator}
-                  </h2>
-                  <h1 className="text-sm text-indigo-500 tracking-widest font-medium title-font mb-1">
-                    {formatDate(data?.blog?.createdAt)}
-                  </h1>
-                </div>
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 capitalize">
                   {values.title}
                 </h1>

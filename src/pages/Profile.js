@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Blog from "../components/Blog";
 import { useSelector } from "react-redux";
 import {  useGetUserQuery } from "../store/services/userService";
-import Spinner from "../components/Spinner";
 import { useGetUserBlogsQuery } from "../store/services/blogService";
 import RHelmet from "../components/Helmet";
+import ProfileSkelton from "../components/ProfileSkelton";
 
 const Profile = () => {
   const {token, type, user } = useSelector(state=>state.user)
@@ -16,11 +16,13 @@ const Profile = () => {
       <RHelmet title="Profile" />
       <div className="w-full md:max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
       {
-        data?.user ? (  <div className="flex flex-col items-center pb-10 mt-10">
+        data?.user ? (  
+        <div className="flex flex-col items-center pb-10 mt-10">
           <img
             className="w-24 h-24 mb-3 rounded-full shadow-lg bg-gray-300"
             src={data?.user?.profile.startsWith('http') ? data?.user?.profile : `${process.env.REACT_APP_SERVER_HOST}/uploads/${data?.user?.profile}`}
             alt={data?.user?.username}
+            loading="lazy"
           />
           <h5 className="mb-1 text-xl font-medium text-gray-900 capitalize">
             {data?.user?.username}
@@ -40,7 +42,8 @@ const Profile = () => {
               Edit Profile
             </Link>
           </div>
-        </div>) : <Spinner/>
+        </div>
+        ) : <ProfileSkelton/>
       }
       </div>
       {token && type === "creator"  && blogs?.blogs?.length > 0 && (

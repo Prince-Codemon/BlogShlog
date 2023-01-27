@@ -28,6 +28,7 @@ function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const [getuser, result] = useGetUserFunctionMutation();
+  
   useEffect(() => {
     if (user) {
       getuser(user);
@@ -45,9 +46,11 @@ function App() {
 
   return (
     <>
-    <RHelmet title="Home" />
+      <RHelmet title="Home" />
       <Navbar />
       <ToastContainer />
+    
+      
       <Routes>
         {/* public routes */}
         <Route path="/" element={<Blogs />} />

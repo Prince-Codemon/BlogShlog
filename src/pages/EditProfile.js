@@ -93,6 +93,7 @@ const EditProfile = () => {
               className="w-24 h-24 mb-3 rounded-full shadow-lg bg-gray-300"
               src={preImg}
               alt={userInfo.username}
+              loading="lazy"
             />
             <div className="relative mb-4 ">
               <label

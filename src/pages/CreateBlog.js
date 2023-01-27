@@ -87,9 +87,9 @@ const CreateBlog = () => {
   }, [image]);
 
   return (
-    <section className="flex  items-start justify-start py-10 px-20">
+    <section className="flex  items-start justify-start flex-col md:flex-row py-10 px-2 md:px-20">
       <RHelmet title="Create Blog" />
-      <div className="flex w-1/2  flex-col items-start justify-start ">
+      <div className="flex md:w-1/2 w-full  flex-col items-start justify-start my-5 ">
         <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center mb-2">
           Write Content
         </h1>
@@ -179,7 +179,7 @@ const CreateBlog = () => {
               <p className="text-red-500 text-xs">{errors.category}</p>
             )}
           </div>
-          <div className="relative mb-4 w-3/4">
+          <div className="relative mb-4 md:w-3/4 w-full">
             <label
               htmlFor="content"
               className="leading-7 text-sm text-gray-600"
@@ -208,7 +208,7 @@ const CreateBlog = () => {
           </button>
         </form>
       </div>
-      <div className="flex w-1/2 items-start justify-start">
+      <div className="flex md:w-1/2 w-full items-start justify-start flex-col">
         <h2 className="text-base bg-indigo-500 p-2 rounded text-white text-center">
           Preview
         </h2>

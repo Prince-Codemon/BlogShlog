@@ -23,7 +23,9 @@ const Blog = () => {
 
   return (
     <section className="text-gray-600 body-font">
-      <RHelmet title={title} content={desc} />
+      {
+title && <RHelmet title={title} content={desc} />
+      }
       {isFetching ? (
         <Spinner />
       ) : (
@@ -32,6 +34,7 @@ const Blog = () => {
             className="lg:w-2/3 md:w-10/12 w-full aspect-video mb-10 object-cover object-center rounded"
             alt={title}
             src={`${process.env.REACT_APP_SERVER_HOST}/uploads/${image}`}
+            loading="lazy"
           />
           <div className="w-full md:w-2/3 flex flex-col mb-16 blog ">
             <div className="w-full flex justify-between items-center">

@@ -11,6 +11,7 @@ const Blog = ({ blog }) => {
           className="lg:h-48 md:h-36 w-full object-cover object-center"
           src={`${process.env.REACT_APP_SERVER_HOST}/uploads/${image}`}
           alt="blog"
+          loading="lazy"
         />
         <div className="p-6 flex flex-col justify-between">
           <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">

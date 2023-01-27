@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Blog from "../components/Blog";
-import Spinner from "../components/Spinner";
+import BlogSkelton from "../components/BlogSkelton";
 import { useGetBlogsQuery } from "../store/services/blogService";
 const Blogs = () => {
   const { data, isLoading } = useGetBlogsQuery();
   const [blogs, setBlogs] = useState([]);
   const sortBlogs = (e) => {
     const value = e.target.value;
-    if (value === "popular")  {  
+    if (value === "popular") {
       const sorted = [...blogs].sort((a, b) => b.views - a.views);
       setBlogs(sorted);
     }
@@ -19,12 +19,12 @@ const Blogs = () => {
     }
     if (value === "trending") {
       const sorted = [...blogs].sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)   && b.views - a.views
+        (a, b) =>
+          new Date(b.createdAt) - new Date(a.createdAt) && b.views - a.views
       );
-
       setBlogs(sorted);
     }
-  }; 
+  };
   useEffect(() => {
     if (data?.blogs) {
       setBlogs(data.blogs);
@@ -41,7 +41,6 @@ const Blogs = () => {
       setBlogs(data?.blogs);
     }
   };
-
 
   return (
     <>
@@ -98,14 +97,14 @@ const Blogs = () => {
           </div>
 
           <div className="flex flex-wrap -m-4 pt-2 items-stretch ">
-            {isLoading ? (
-              <Spinner />
-            ) : (
-              blogs.map((blog) => <Blog key={blog._id} blog={blog} />)
+            {isLoading
+              ? [1, 2, 3, 4, 5, 6, 7, 8].map((i) => <BlogSkelton key={i} />)
+              : blogs.map((blog) => <Blog key={blog._id} blog={blog} />)}
+            {data?.blogs && !blogs.length && (
+              <h1 className="text-2xl w-full pt-10 text-center text-gray-500 dark:text-gray-400">
+                No Blogs Found
+              </h1>
             )}
-            {
-             data?.blogs && !blogs.length && <h1 className="text-2xl w-full pt-10 text-center text-gray-500 dark:text-gray-400">No Blogs Found</h1>
-            }
           </div>
         </div>
       </section>
