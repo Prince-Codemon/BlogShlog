@@ -9,7 +9,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   
   return (
-    <header className="text-gray-600 body-font bg-gray-800  ">
+    <header className="text-gray-600 body-font bg-gray-900  ">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center md:justify-between justify-center">
         <Link
           to={"/"}
