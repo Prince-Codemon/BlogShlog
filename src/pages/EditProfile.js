@@ -34,9 +34,7 @@ const EditProfile = () => {
   useEffect(() => {
     setUserInfo(data?.user);
     setPreImg(
-      data?.user?.profile.startsWith("http")
-        ? data?.user?.profile
-        : `${process.env.REACT_APP_SERVER_HOST}/uploads/${data?.user?.profile}`
+      data?.user?.profile
     );
   }, [data?.user]);
 
@@ -55,8 +53,6 @@ const EditProfile = () => {
     if(userInfo.bio.length > 100){
       return toast.error('Bio should be less than 100 characters long')
     }
-
-
 
     const formData = new FormData();
     profile ? formData.append("profile", profile) : formData.append("profile", "");
@@ -175,6 +171,7 @@ const EditProfile = () => {
             <div className="flex mt-4 space-x-3 md:mt-6">
               <button
                 type="submit"
+                disabled={isLoading}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
               >
                 {

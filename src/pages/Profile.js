@@ -20,7 +20,7 @@ const Profile = () => {
         <div className="flex flex-col items-center pb-10 mt-10">
           <img
             className="w-24 h-24 mb-3 rounded-full shadow-lg bg-gray-300"
-            src={data?.user?.profile.startsWith('http') ? data?.user?.profile : `${process.env.REACT_APP_SERVER_HOST}/uploads/${data?.user?.profile}`}
+            src={data?.user?.profile}
             alt={data?.user?.username}
             loading="lazy"
           />

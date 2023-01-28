@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Blog from "../components/Blog";
 import { useGetUserQuery } from "../store/services/userService";
-import ProfileSkelton from '../components/ProfileSkelton'
+import ProfileSkelton from "../components/ProfileSkelton";
 import { useGetUserBlogsQuery } from "../store/services/blogService";
 import RHelmet from "../components/Helmet";
 const UserProfile = () => {
@@ -25,11 +25,7 @@ const UserProfile = () => {
           <div className="flex flex-col items-center pb-10 mt-10">
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg bg-gray-300"
-              src={
-                data?.user?.profile.startsWith("http")
-                  ? data?.user?.profile
-                  : `${process.env.REACT_APP_SERVER_HOST}/uploads/${data?.user?.profile}`
-              }
+              src={data?.user?.profile}
               alt={data?.user?.username}
             />
             <h5 className="mb-1 text-xl font-medium text-gray-900 capitalize">
@@ -49,7 +45,7 @@ const UserProfile = () => {
             </a>
           </div>
         ) : (
-          <ProfileSkelton/>
+          <ProfileSkelton />
         )}
       </div>
       {blogs.length > 0 && (

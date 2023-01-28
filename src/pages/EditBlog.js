@@ -67,7 +67,7 @@ const EditBlog = () => {
   useEffect(() => {
     setContent(data?.blog?.content);
     setPreImg(
-      `${process.env.REACT_APP_SERVER_HOST}/uploads/${data?.blog?.image}`
+      data?.blog?.image 
     );
     if (
       data?.blog?.title &&
@@ -138,7 +138,7 @@ const EditBlog = () => {
                   }}
                 />
               </div>
-              <div className="relative mb-4 md:md:w-3/4 w-full w-full">
+              <div className="relative mb-4 md:md:w-3/4 w-full ">
                 <label
                   htmlFor="title"
                   className="leading-7 text-sm text-gray-600"
@@ -232,6 +232,7 @@ const EditBlog = () => {
               <button
                 type="submit"
                 className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                disabled={isLoading}
               >
                 {isLoading ? <Spinner /> : "Update"}
               </button>

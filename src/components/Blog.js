@@ -9,7 +9,7 @@ const Blog = ({ blog }) => {
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <img
           className="lg:h-48 md:h-36 w-full object-cover object-center"
-          src={`${process.env.REACT_APP_SERVER_HOST}/uploads/${image}`}
+          src={image}
           alt="blog"
           loading="lazy"
         />

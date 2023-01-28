@@ -35,3 +35,9 @@
   height: 100px !important;
   object-fit: cover;
 }
+
+button:disabled{
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}

@@ -185,7 +185,7 @@ const Dashboard = () => {
                   >
                     <img
                       className="w-10 h-10 rounded-full"
-                      src={`${process.env.REACT_APP_SERVER_HOST}/uploads/${blog.image}`}
+                      src={blog.image}
                       alt={blog.category}
                       loading="lazy"
                     />
