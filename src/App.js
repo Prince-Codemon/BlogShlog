@@ -49,8 +49,6 @@ function App() {
       <RHelmet title="Home" />
       <Navbar />
       <ToastContainer />
-    
-      
       <Routes>
         {/* public routes */}
         <Route path="/" element={<Blogs />} />

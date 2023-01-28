@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
 import { useFormik } from "formik";
 import { blogSchema } from "../schemas";
@@ -8,21 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import RHelmet from "../components/Helmet";
-const toolbarOptions = [
-  // custom button values
-  [{ size: ["small", false, "large", "huge"] }],
-  ["bold", "italic", "underline", "strike"], // toggled buttons
-  ["blockquote", "code-block"],
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ script: "sub" }, { script: "super" }], // superscript/subscript
-  [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-  [{ direction: "rtl" }], // text direction
-  [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-  [{ font: [] }],
-  [{ align: [] }],
-  ["clean"], // remove formatting button
-  ["link", "video"],
-];
+import Editor from "../components/Editor";
+
 
 const CreateBlog = () => {
   const [content, setContent] = useState("");
@@ -186,13 +173,10 @@ const CreateBlog = () => {
             >
               Content
             </label>
-            <ReactQuill
-              theme="snow"
-              value={content}
-              onChange={setContent}
-              modules={{
-                toolbar: toolbarOptions,
-              }}
+            <Editor
+              content={content}
+              setContent={setContent}
+              readOnly={false}
             />
             {errors.content && touched.content && (
               <p className="text-red-500 text-xs">{errors.content}</p>
@@ -203,9 +187,7 @@ const CreateBlog = () => {
             className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
             disabled={isLoading}
           >
-        {
-          isLoading ? <Spinner/> : "Submit"
-        }
+            {isLoading ? <Spinner /> : "Submit"}
           </button>
         </form>
       </div>
@@ -224,7 +206,10 @@ const CreateBlog = () => {
               {values.title ? values.title : "Blog Title"}
             </h1>
             {content ? (
-              <ReactQuill theme="bubble" value={content} readOnly={true} />
+              <Editor
+                content={content}
+                readOnly={true}
+              />
             ) : (
               <p className="leading-relaxed mb-8"> Blog Content</p>
             )}

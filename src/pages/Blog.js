@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import ReactQuill from "react-quill";
 import { Link, useParams } from "react-router-dom";
 import RHelmet from "../components/Helmet";
 import BlogSkelton from '../components/BlogSkelton'
 import { useGetBlogQuery } from "../store/services/blogService";
 import { useGetUserFunctionMutation } from "../store/services/userService";
 import formatDate from "../utils/date";
+import Editor from "../components/Editor";
 
 const Blog = () => {
   window.scrollTo(0, 0);
@@ -23,11 +23,9 @@ const Blog = () => {
 
   return (
     <section className="text-gray-600 body-font">
-      {
-title && <RHelmet title={title} content={desc} />
-      }
+      {title && <RHelmet title={title} content={desc} />}
       {isFetching ? (
-        <BlogSkelton/>
+        <BlogSkelton />
       ) : (
         <div className="container mx-auto flex flex-col px-5 py-20 justify-center items-center">
           <img
@@ -55,11 +53,11 @@ title && <RHelmet title={title} content={desc} />
                 {formatDate(createdAt)}
               </h1>
             </div>
-              <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 capitalize">
-                {title}
-              </h1>
+            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 capitalize">
+              {title}
+            </h1>
 
-            <ReactQuill theme="bubble" value={content} readOnly={true} />
+            <Editor content={content} readOnly={true} />
           </div>
         </div>
       )}

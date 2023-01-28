@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useFormik } from "formik";
 import { blogSchema } from "../schemas";
@@ -12,22 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import RHelmet from "../components/Helmet";
-
-const toolbarOptions = [
-  // custom button values
-  [{ size: ["small", false, "large", "huge"] }],
-  ["bold", "italic", "underline", "strike"], // toggled buttons
-  ["blockquote", "code-block"],
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ script: "sub" }, { script: "super" }], // superscript/subscript
-  [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-  [{ direction: "rtl" }], // text direction
-  [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-  [{ font: [] }],
-  [{ align: [] }],
-  ["clean"], // remove formatting button
-  ["link", "video"],
-];
+import Editor from "../components/Editor";
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -217,14 +201,8 @@ const EditBlog = () => {
                 >
                   Content
                 </label>
-                <ReactQuill
-                  theme="snow"
-                  value={content}
-                  onChange={setContent}
-                  modules={{
-                    toolbar: toolbarOptions,
-                  }}
-                />
+
+                <Editor content={content} setContent={setContent} readOnly={false}  />
                 {errors.content && touched.content && (
                   <p className="text-red-500 text-xs">{errors.content}</p>
                 )}
@@ -253,7 +231,7 @@ const EditBlog = () => {
                   {values.title}
                 </h1>
 
-                <ReactQuill theme="bubble" value={content} readOnly={true} />
+                <Editor content={content} readOnly={true} />
               </div>
             </div>
           </div>
