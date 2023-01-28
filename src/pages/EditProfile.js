@@ -53,7 +53,6 @@ const EditProfile = () => {
     if(userInfo.bio.length > 100){
       return toast.error('Bio should be less than 100 characters long')
     }
-
     const formData = new FormData();
     profile ? formData.append("profile", profile) : formData.append("profile", "");
     formData.append("username", JSON.stringify(userInfo.username));
@@ -74,6 +73,7 @@ const EditProfile = () => {
 
   }, [error, isSuccess, navigate]);
 
+
   
   
 
@@ -81,7 +81,7 @@ const EditProfile = () => {
     <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center">
       <RHelmet title="Edit Profile" />
       <div className="w-full max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
-        {data?.user ? (
+        {userInfo ? (
           <form
             onSubmit={handleSubmit}
             className="flex flex-col items-center pb-10 mt-10"

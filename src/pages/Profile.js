@@ -12,7 +12,7 @@ const Profile = () => {
   const {data} = useGetUserQuery(user)
   const {data:blogs} = useGetUserBlogsQuery(user)
   return (
-    <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center">
+    <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center min-h-[70vh]">
       <RHelmet title="Profile" />
       <div className="w-full md:max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
       {
@@ -29,6 +29,9 @@ const Profile = () => {
           </h5>
           <span className="text-sm text-gray-500 mx-4">
             {data?.user?.bio}
+          </span>
+          <span className="text-sm text-gray-500 mx-4">
+            {data?.user?.email}
           </span>
           <span className="text-sm text-indigo-500  font-bold capitalize">
             {data?.user?.type}

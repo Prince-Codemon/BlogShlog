@@ -72,6 +72,7 @@ const CreateBlog = () => {
     };
     image && fileReader();
   }, [image]);
+  
 
   return (
     <section className="flex  items-start justify-start flex-col md:flex-row py-10 px-2 md:px-20">
