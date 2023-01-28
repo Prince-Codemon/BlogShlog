@@ -42,7 +42,7 @@ title && <RHelmet title={title} content={desc} />
                 <Link to={`/user/${creator}`}>
                   <img
                     className="w-10 h-10 rounded-sm shadow-md"
-                    src={`${process.env.REACT_APP_SERVER_HOST}/uploads/${userData?.user?.profile}`}
+                    src={userData?.user?.profile}
                     alt={userData?.user?.username}
                   />
 
