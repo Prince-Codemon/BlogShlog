@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="sm:flex sm:items-center sm:justify-between">
         <Link to="/" className="flex items-center mb-4 sm:mb-0">
   
-          <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl font-bold whitespace-nowrap text-white">
            BlogShlog
           </span>
         </Link>
