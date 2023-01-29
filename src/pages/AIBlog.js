@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-import { Spinner } from "react-bootstrap";
 import BlogSkelton from "../components/BlogSkelton";
 import Editor from "../components/Editor";
 import {
@@ -16,6 +15,7 @@ import isJson from "../utils/isJson";
 import { HiRefresh } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import Spinner from '../components/Spinner'
 
 const AIBlog = () => {
   const [content, setContent] = useState("");
