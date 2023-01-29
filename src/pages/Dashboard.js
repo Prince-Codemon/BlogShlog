@@ -88,7 +88,7 @@ const Dashboard = () => {
             </Link>
             
             </div>
-        <div className="flex items-start md:items-center justify-between py-4  bg-gray-800 p-2 flex-col md:flex-row ">
+        <div className="flex items-start md:items-center justify-between py-4  bg-gray-800 p-2 flex-col md:flex-row md:gap-0 gap-2">
           <div className="flex justify-between items-center w-full md:w-2/6 ">
             <h1 className="text-2xl font-semibold text-gray-200">
               Dashboard

@@ -164,7 +164,7 @@ const AIBlog = () => {
   }, [blogContent, values]);
 
   return (
-    <section className="flex flex-col items-center justify-center py-10 md:px-2 px-0 min-h-screen">
+    <section className="flex flex-col items-center justify-center py-10 md:px-2 px-0 md:min-h-screen min-h-[70vh]">
       <RHelmet title="Generate Blog Using AI" />
       <>
         <h1 className="text-5xl text-gray-900 font-extrabold font-mono text-center mb-2">
