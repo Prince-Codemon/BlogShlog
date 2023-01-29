@@ -77,9 +77,20 @@ const Dashboard = () => {
     <>
       <div className="relative overflow-x-auto shadow-md  bg-gray-800 ">
         <RHelmet title="Dashboard" />
-        <div className="flex items-start md:items-center justify-between py-4 bg-white dark:bg-gray-800 p-2 flex-col md:flex-row ">
+        <div className="min-screen bg-gray-800 flex items-center justify-center font-sans overflow-hidden my-3">
+          
+            <Link 
+            to={'/creator/aiblog'}
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 gap-2
+                    "
+            >
+              <BsBookmarks /> Create Blog Using AI BETA
+            </Link>
+            
+            </div>
+        <div className="flex items-start md:items-center justify-between py-4  bg-gray-800 p-2 flex-col md:flex-row ">
           <div className="flex justify-between items-center w-full md:w-2/6 ">
-            <h1 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            <h1 className="text-2xl font-semibold text-gray-200">
               Dashboard
             </h1>
             <Link
@@ -146,12 +157,12 @@ const Dashboard = () => {
             <Spinner />{" "}
           </div>
         ) : blogs.length === 0 ? (
-          <div className="text-center text-2xl text-gray-700 dark:text-gray-200">
+          <div className="text-center text-2xl  dark:text-gray-200">
             No Blogs Found
           </div>
         ) : (
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs  uppercase  bg-gray-700 text-gray-200">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Title
@@ -177,11 +188,11 @@ const Dashboard = () => {
               {blogs?.map((blog, i) => (
                 <tr
                   key={i}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 "
+                  className=" border-b bg-gray-800 border-gray-700 dark:hover:bg-gray-600 "
                 >
                   <th
                     scope="row"
-                    className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                    className="flex items-center px-6 py-4 text-gray-200 whitespace-nowrap "
                   >
                     <img
                       className="w-10 h-10 rounded-full"

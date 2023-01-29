@@ -24,6 +24,7 @@ import EditBlog from "./pages/EditBlog";
 import UserProfile from "./pages/UserProfile";
 import ForgortPage from "./pages/ForgotPage";
 import RHelmet from "./components/Helmet";
+import AIBlog from "./pages/AIBlog";
 function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -48,7 +49,18 @@ function App() {
     <>
       <RHelmet title="Home" />
       <Navbar />
-      <ToastContainer />
+      <ToastContainer 
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        
+      />
       <Routes>
         {/* public routes */}
         <Route path="/" element={<Blogs />} />
@@ -126,6 +138,14 @@ function App() {
             element={
               <Creator>
                 <Dashboard />
+              </Creator>
+            }
+          />
+          <Route
+            path="aiblog"
+            element={
+              <Creator>
+                <AIBlog />{" "}
               </Creator>
             }
           />
