@@ -65,6 +65,14 @@ export const blogApi = createApi({
       }),
       providesTags: ["Blog"],
     }),
+    aiBlog: builder.mutation({
+      query: (body) => ({
+        url: "/user/aiblog",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Blog"],
+    }),
   }),
 });
 
@@ -75,7 +83,8 @@ export const {
   useUpdateBlogMutation,
   useDeleteBlogMutation,
   useGetUserBlogsQuery,
-  useGetCategoriesQuery
+  useGetCategoriesQuery,
+  useAiBlogMutation,
 } = blogApi;
 
 export default blogApi;

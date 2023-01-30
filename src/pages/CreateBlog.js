@@ -85,7 +85,7 @@ const CreateBlog = () => {
           onSubmit={handleSubmit}
           className="flex flex-col items-start justify-center w-full"
         >
-          <div className="relative mb-4 ">
+          <div className="relative mb-4 md:w-3/4 w-full">
             <label htmlFor="photo" className="leading-7 text-sm text-gray-600">
               Upload photo
             </label>
@@ -101,7 +101,7 @@ const CreateBlog = () => {
               }}
             />
           </div>
-          <div className="relative mb-4 w-3/4">
+          <div className="relative mb-4 md:w-3/4 w-full">
             <label htmlFor="title" className="leading-7 text-sm text-gray-600">
               Title
             </label>
@@ -119,7 +119,7 @@ const CreateBlog = () => {
               <p className="text-red-500 text-xs">{errors.title}</p>
             )}
           </div>
-          <div className="relative mb-4 w-3/4">
+          <div className="relative mb-4 md:w-3/4 w-full">
             <label htmlFor="desc" className="leading-7 text-sm text-gray-600">
               Description
             </label>
@@ -137,7 +137,7 @@ const CreateBlog = () => {
               <p className="text-red-500 text-xs">{errors.desc}</p>
             )}
           </div>
-          <div className="relative mb-4 w-3/4">
+          <div className="relative mb-4 md:w-3/4 w-full">
             <label
               htmlFor="category"
               className="leading-7 text-sm text-gray-600"
@@ -207,10 +207,7 @@ const CreateBlog = () => {
               {values.title ? values.title : "Blog Title"}
             </h1>
             {content ? (
-              <Editor
-                content={content}
-                readOnly={true}
-              />
+              <Editor content={content} readOnly={true} />
             ) : (
               <p className="leading-relaxed mb-8"> Blog Content</p>
             )}

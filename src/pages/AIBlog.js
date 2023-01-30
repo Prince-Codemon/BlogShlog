@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import { Configuration, OpenAIApi } from "openai";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import BlogSkelton from "../components/BlogSkelton";
 import Editor from "../components/Editor";
 import {
+  useAiBlogMutation,
   useCreateBlogMutation,
   useGetCategoriesQuery,
 } from "../store/services/blogService";
 import { blogSchema } from "../schemas";
 import { useFormik } from "formik";
 import RHelmet from "../components/Helmet";
-import isJson from "../utils/isJson";
 import { HiRefresh } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import Spinner from '../components/Spinner'
+import Spinner from "../components/Spinner";
 
 const AIBlog = () => {
   const [content, setContent] = useState("");
@@ -25,6 +24,8 @@ const AIBlog = () => {
   const [create, result] = useCreateBlogMutation();
   const { data, error, isLoading: loading } = result;
   const { data: categories } = useGetCategoriesQuery();
+  const [getBlog, { data: blog, error: blogerr, isLoading }] =
+    useAiBlogMutation();
 
   const createBlog = async () => {
     const formData = new FormData();
@@ -52,18 +53,45 @@ const AIBlog = () => {
       },
     });
 
-  const [blogContent, setBlogContent] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  
 
-  const config = new Configuration({
-    apiKey: process.env.REACT_APP_AI_SECRET_KEY,
-  });
-  const openai = new OpenAIApi(config);
-
+  //     toast.error(
+  //       "Please enter a title or heading to generate content for your blog"
+  //     );
+  //     return;
+  //   }
+  //   if (title.length < 10) {
+  //     toast.error(
+  //       "Please enter a title or heading with more than 10 characters to generate content for your blog"
+  //     );
+  //     return;
+  //   }
+  //   try {
+  //     setBlogContent(null);
+  //     values.title = "";
+  //     values.desc = "";
+  //     values.category = "";
+  //     const response = await openai.createCompletion({
+  //       model: "text-davinci-002",
+  //       prompt: `${title}, with title, metadesc max 200 char, content in object json format and content should be in html format with some styling like bold, italic and content should be complete and without spacing proper json format not in array `,
+  //       temperature: 0,
+  //       max_tokens: 1000,
+  //     });
+  //     if (!isJson(response.data.choices[0].text)) {
+  //       toast.error("Something went wrong please try again");
+  //       return;
+  //     }
+  //     setBlogContent(response.data.choices[0].text);
+  //     generateImage(
+  //       response.data.choices[0].text.split('","')[0].split('":"')[1]
+  //     );
+  //   } catch (err) {
+  //       toast.error("Something went wrong please try again");
+  //   } finally {
+  //   }
+  // };
   const generateContent = async () => {
-    setIsLoading(true);
     if (title === "") {
-      setIsLoading(false);
       toast.error(
         "Please enter a title or heading to generate content for your blog"
       );
@@ -73,34 +101,16 @@ const AIBlog = () => {
       toast.error(
         "Please enter a title or heading with more than 10 characters to generate content for your blog"
       );
-      setIsLoading(false);
       return;
     }
     try {
-      setBlogContent(null);
       values.title = "";
       values.desc = "";
       values.category = "";
-      const response = await openai.createCompletion({
-        model: "text-davinci-002",
-        prompt: `${title}, with title, metadesc max 200 char, content in object json format and content should be in html format with some styling like bold, italic and content should be complete and without spacing proper json format not in array `,
-        temperature: 0,
-        max_tokens: 1000,
-      });
-      if (!isJson(response.data.choices[0].text)) {
-        toast.error("Something went wrong please try again");
-        setIsLoading(false);
-        return;
-      }
-      setBlogContent(response.data.choices[0].text);
-      generateImage(
-        response.data.choices[0].text.split('","')[0].split('":"')[1]
-      );
+      getBlog({ title });
     } catch (err) {
-        toast.error("Something went wrong please try again");
-        setIsLoading(false);
+      toast.error("Something went wrong please try again");
     } finally {
-      setIsLoading(false);
     }
   };
 
@@ -108,10 +118,11 @@ const AIBlog = () => {
     try {
       const image = await fetch(
         `https://source.unsplash.com/1600x900/?${imgTitle}`
+        
       );
       const blob = await image.blob();
       const file = new File([blob], `${imgTitle}.jpg`, { type: blob.type });
-      
+
       setPreImg(URL.createObjectURL(file));
       setImage(file);
 
@@ -138,7 +149,6 @@ const AIBlog = () => {
       setTitle("");
       setPreImg("");
       setImage("");
-      setBlogContent(null);
     }
     if (error) {
       toast.error("Something went wrong");
@@ -147,21 +157,28 @@ const AIBlog = () => {
 
   useEffect(() => {
     try {
-      if (blogContent && !values.title && !values.desc && !values.category) {
-        const data = JSON.parse(blogContent);
-        if (!data) {
-          toast.error("Something went wrong");
-          return;
-        }
+      if (blog?.blog && !values.title && !values.desc && !values.category) {
+        const data = blog.blog;
         values.title = data.title;
-
         values.desc = data.metadesc;
         setContent(data.content);
+        generateImage(values.title);
       }
     } catch (error) {
       toast.error("Something went wrong");
     }
-  }, [blogContent, values]);
+  }, [blog?.blog, values]);
+
+  useEffect(() => {
+    if(blogerr?.status === 429){
+      toast.error(blogerr.data.msg)
+      return
+    }
+    if (blogerr) {
+      toast.error('Please Wait or Retry');
+      return
+    }
+  }, [blogerr]);
 
   return (
     <section className="flex flex-col items-center justify-center py-10 md:px-2 px-0 md:min-h-screen min-h-[70vh]">
@@ -170,7 +187,7 @@ const AIBlog = () => {
         <h1 className="text-5xl text-gray-900 font-extrabold font-mono text-center mb-2">
           Generate Blog Using AI
         </h1>
-        <div className="flex flex-col items-center justify-center w-full">
+        <div className="flex flex-col items-center justify-center w-full mb-3">
           <input
             type="text"
             required
@@ -184,6 +201,9 @@ const AIBlog = () => {
           <p className="text-gray-500 text-sm mb-4">
             <b>Example:</b> Write a blog on Global Warming
           </p>
+          <p className="text-gray-500 text-sm mb-4">
+            <b>Note:</b> Max request per day is 10
+          </p>
           <button
             onClick={generateContent}
             className="text-base bg-indigo-500 px-4 py-2 rounded text-white text-center mb-2"
@@ -194,8 +214,8 @@ const AIBlog = () => {
         </div>
       </>
       {isLoading && <BlogSkelton />}
-      {!isLoading && blogContent && (
-        <div
+      { !isLoading && blog?.blog &&
+        (<div
           div
           className=" 
             flex md:flex-row flex-col items-center justify-center w-full  mt-5 px-4
@@ -209,7 +229,7 @@ const AIBlog = () => {
               onSubmit={handleSubmit}
               className="flex flex-col items-start justify-center w-full"
             >
-              <div className="relative mb-4 ">
+              <div className="relative mb-4 md:md:w-3/4 w-full ">
                 <label
                   htmlFor="photo"
                   className="leading-7 text-sm text-gray-600"
@@ -327,11 +347,11 @@ const AIBlog = () => {
               </button>
             </form>
           </div>
-          <div className="flex md:w-1/2 w-full items-start justify-start flex-col my-5">
-            <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center mb-10">
+          <div className="flex md:w-1/2 w-full items-start justify-start flex-col ">
+            <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center ">
               Preview
             </h1>
-            <div className="container mx-auto flex flex-col px-5 py-20 justify-center items-center relative">
+            <div className="container mx-auto flex flex-col px-5 pb-20 pt-10 justify-center items-center relative">
               {preImg ? (
                 <img
                   className="lg:w-2/3 md:w-10/12 w-full aspect-video  mb-10 object-cover object-center rounded"
@@ -369,8 +389,8 @@ const AIBlog = () => {
               </div>
             </div>
           </div>
-        </div>
-      )}
+        </div>)
+      }
     </section>
   );
 };

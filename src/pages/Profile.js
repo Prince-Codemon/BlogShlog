@@ -6,11 +6,20 @@ import {  useGetUserQuery } from "../store/services/userService";
 import { useGetUserBlogsQuery } from "../store/services/blogService";
 import RHelmet from "../components/Helmet";
 import ProfileSkelton from "../components/ProfileSkelton";
+import { useEffect } from "react";
+import {type as utype } from '../store/slice/userSlice'
+import { useDispatch } from "react-redux";
 
 const Profile = () => {
   const {token, type, user } = useSelector(state=>state.user)
   const {data} = useGetUserQuery(user)
   const {data:blogs} = useGetUserBlogsQuery(user)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(utype(data?.user?.type))
+  }, [data?.user?.type, dispatch])
+    
+
   return (
     <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center min-h-[70vh]">
       <RHelmet title="Profile" />
