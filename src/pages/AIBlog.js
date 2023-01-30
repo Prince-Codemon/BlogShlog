@@ -311,7 +311,6 @@ const AIBlog = () => {
                   <option value="" disabled>
                     Select Category
                   </option>
-                  <option value="business">Business</option>
                   {categories?.categories?.map((category) => (
                     <option key={category._id} value={category.category}>
                       {category.category}
