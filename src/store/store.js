@@ -9,4 +9,7 @@ export const store = configureStore({
         [blogApi.reducerPath]: blogApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(userApi.middleware, blogApi.middleware),
+    devTools : false,
+    
+            
 })
