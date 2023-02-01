@@ -346,7 +346,7 @@ const AIBlog = () => {
               </button>
             </form>
           </div>
-          <div className="flex md:w-1/2 w-full items-start justify-start flex-col ">
+          <div className="flex md:w-1/2 w-full items-start justify-start flex-col mt-5 md:mt-0 ">
             <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center ">
               Preview
             </h1>
