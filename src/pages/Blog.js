@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import RHelmet from "../components/Helmet";
-import BlogSkelton from '../components/BlogSkelton'
+import BlogSkelton from "../components/BlogSkelton";
 import { useGetBlogQuery } from "../store/services/blogService";
 import { useGetUserFunctionMutation } from "../store/services/userService";
 import formatDate from "../utils/date";
 import Editor from "../components/Editor";
+import { WhatsappShareButton, WhatsappIcon, 
+  LinkedinIcon, LinkedinShareButton,
+   TelegramIcon, TelegramShareButton, TwitterIcon, TwitterShareButton, FacebookIcon, FacebookShareButton } from "react-share";
 
 const Blog = () => {
   window.scrollTo(0, 0);
@@ -23,7 +26,14 @@ const Blog = () => {
 
   return (
     <section className="text-gray-600 body-font">
-      {title && <RHelmet title={title} content={desc} />}
+      {title && (
+        <RHelmet
+          title={title}
+          content={desc}
+          image={image}
+          creator={userData?.user?.username}
+        />
+      )}
       {isFetching ? (
         <BlogSkelton />
       ) : (
@@ -53,6 +63,51 @@ const Blog = () => {
                 {formatDate(createdAt)}
               </h1>
             </div>
+            <div className="w-full flex justify-between items-center my-2">
+              <div className="flex items-center">
+                <WhatsappShareButton
+                  url={`${process.env.REACT_APP_BASE_URL}/blog/${id}`}
+                  title={title}
+                  separator=" "
+                >
+                  <WhatsappIcon size={32} round={true} />
+                </WhatsappShareButton>
+                <TwitterShareButton
+                  url={`${process.env.REACT_APP_BASE_URL}/blog/${id}`}
+                  title={title}
+                >
+                  <TwitterIcon size={32} round={true} />
+                </TwitterShareButton>
+                <FacebookShareButton
+                  url={`${process.env.REACT_APP_BASE_URL}/blog/${id}`}
+                  title={title}
+                >
+                  <FacebookIcon size={32} round={true} />
+                </FacebookShareButton>
+                <LinkedinShareButton
+                  url={`${process.env.REACT_APP_BASE_URL}/blog/${id}`}
+                  title={title}
+                 
+                >
+                  <LinkedinIcon size={32} round={true} />
+                </LinkedinShareButton>
+                <TelegramShareButton
+                  url={`${process.env.REACT_APP_BASE_URL}/blog/${id}`}
+                  title={title}
+                >
+                  <TelegramIcon size={32} round={true} />
+                </TelegramShareButton>
+                
+                {/* <EmailShareButton
+                  url={`${process.env.REACT_APP_BASE_URL}/blog/${id}`}
+                  title={title}
+                >
+                  <EmailIcon size={32} round={true} />
+                </EmailShareButton> */}
+
+              </div>
+            </div>
+
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 capitalize">
               {title}
             </h1>

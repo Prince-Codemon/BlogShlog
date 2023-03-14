@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Blog from "../components/Blog";
 import BlogSkelton from "../components/BlogSkelton";
+import RHelmet from "../components/Helmet";
 import { useGetBlogsQuery } from "../store/services/blogService";
 const Blogs = () => {
   const { data, isLoading } = useGetBlogsQuery();
@@ -44,6 +45,14 @@ const Blogs = () => {
 
   return (
     <>
+    <RHelmet title={
+      "BlogShlog : Blogging Website"
+    }
+    content={
+      "BlogShlog is a blogging website where you can read blogs and write blogs. You can also share your blogs with your friends and family."
+    }
+    />
+    
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 pt-10 mx-auto">
           <div className="flex items-start md:items-center gap-2 md:gap-0 justify-between py-4 bg-gray-900 p-2  flex-col md:flex-row">
