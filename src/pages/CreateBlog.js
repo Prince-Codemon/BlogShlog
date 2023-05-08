@@ -97,6 +97,11 @@ const CreateBlog = () => {
               accept=".png, .jpg, .jpeg"
               required
               onChange={(e) => {
+                const type = e.target.files[0].type;
+                if (type !== "image/png" && type !== "image/jpg" && type !== "image/jpeg") {
+                    toast.error("Only .png, .jpg, .jpeg files are allowed");
+                    return
+                }
                 setImage(e.target.files[0]);
               }}
             />

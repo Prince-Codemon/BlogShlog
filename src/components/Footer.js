@@ -22,6 +22,11 @@ const Footer = () => {
             </Link>
           </li>
           <li>
+            <Link to={"/faq"} className="mr-4 hover:underline md:mr-6">
+              FAQ
+            </Link>
+          </li>
+          <li>
             <a
               className="mr-4 hover:underline md:mr-6"
               href="https://www.princecodemon.live"

@@ -26,6 +26,7 @@ import ForgortPage from "./pages/ForgotPage";
 import RHelmet from "./components/Helmet";
 import AIBlog from "./pages/AIBlog";
 import Sitemap from "./Sitemap";
+import Faq from "./pages/Faq";
 function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -65,6 +66,7 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="/" element={<Blogs />} />
+        <Route path="/faq" element={<Faq/>}/>
         <Route path="/blog/:id" pr element={<Blog />} />
         <Route path="/user/:id" element={<UserProfile />} />
         {/* auth routes */}
