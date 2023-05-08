@@ -25,6 +25,7 @@ import UserProfile from "./pages/UserProfile";
 import ForgortPage from "./pages/ForgotPage";
 import RHelmet from "./components/Helmet";
 import AIBlog from "./pages/AIBlog";
+import Sitemap from "./Sitemap";
 function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -64,7 +65,7 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="/" element={<Blogs />} />
-        <Route path="/blog/:id" element={<Blog />} />
+        <Route path="/blog/:id" pr element={<Blog />} />
         <Route path="/user/:id" element={<UserProfile />} />
         {/* auth routes */}
         <Route path="/auth">
@@ -151,8 +152,12 @@ function App() {
           />
           <Route path="editblog/:id" element={<EditBlog />} />
         </Route>
+        {/* sitemap */}
+        <Route path="/sitemap" element={<Sitemap />} />
         {/* not found page */}
+
         <Route path="*" element={<NFPage />} />
+
       </Routes>
       <Footer />
     </>
