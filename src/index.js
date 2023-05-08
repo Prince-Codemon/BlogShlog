@@ -5,6 +5,7 @@ import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import { store } from './store/store';
 import {Provider} from 'react-redux'
+import { hydrate, render } from 'react-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -17,4 +18,13 @@ root.render(
   </>
 );
 
+
+const rootElement = document.getElementById('root')
+if (rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement)
+  
+}
+else{
+  render(<App />, rootElement)
+}
 
