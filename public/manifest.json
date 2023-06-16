@@ -1,7 +1,7 @@
 {
   "short_name": "BlogShlog",
-  "name": "BlogShlog : Blogging App",
-  "description":"BlogShlog is a blogging app that allows you to create your own blog and share your thoughts with the world.",
+  "name": "BlogShlog: Share Your Thoughts with the World",
+  "description": "BlogShlog is a powerful blogging app that allows you to create and customize your own blog, and share your thoughts and ideas with a global audience.",
   "icons": [
     {
       "src": "logo.ico",
@@ -19,8 +19,25 @@
       "sizes": "512x512"
     }
   ],
+  "id": "/",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "author": "Prince Codemon",
+  "version": "1.0.0",
+  "categories": ["Blogging", "Social Media"],
+  "keywords": ["blog", "writing", "sharing", "thoughts"],
+  "permissions": ["camera", "geolocation"],
+  "languages": ["en", "fr", "es"],
+  "related_applications": [
+    {
+      "platform": "web"
+    },
+    {
+      "platform": "play",
+      "id": "/",
+      "url": "https://play.google.com/store/apps/details?id=blogshlog.com"
+    }
+  ]
 }
