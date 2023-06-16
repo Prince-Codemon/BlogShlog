@@ -1,5 +1,5 @@
 [build]
-  command = "CI='' npm run build"
+  command = "CI='' GENERATE_SOURCEMAP=false npm run build"
   publish = "/build"
   base ="/"
 
