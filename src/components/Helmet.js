@@ -37,16 +37,6 @@ const RHelmet = ({ title, content, image, creator }) => {
       <meta property="og:article:author" content={creator} />
       <meta property="og:article:section" content="Blog" />
       <meta property="og:article:tag" content="Blog" />
-      <meta name="robots" content="all" />
-      <meta name="robots" content="noindex" />
-      <meta name="robots" content="nofollow" />
-      <meta name="robots" content="noindex, nofollow" />
-      <meta name="robots" content="index, follow" />
-      <meta name="robots" content="none" />
-      <meta name="robots" content="noarchive" />
-      <meta name="robots" content="notranslate" />
-      <meta name="robots" content="noimageindex" />
-      <meta name="robots" content="nosnippet" />
     </Helmet>
   );
 };
