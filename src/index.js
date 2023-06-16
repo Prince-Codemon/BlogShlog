@@ -5,8 +5,10 @@ import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import { store } from './store/store';
 import {Provider} from 'react-redux'
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+disableReactDevTools();
 root.render(
   <>
     <Provider store={store}>
