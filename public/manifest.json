@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BlogShlog",
+  "name": "BlogShlog : Blogging App",
+  "description":"BlogShlog is a blogging app that allows you to create your own blog and share your thoughts with the world.",
   "icons": [
     {
       "src": "logo.ico",
@@ -18,7 +19,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

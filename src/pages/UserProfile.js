@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Blog from "../components/Blog";
 import { useGetUserQuery } from "../store/services/userService";
 import ProfileSkelton from "../components/ProfileSkelton";
@@ -8,7 +8,8 @@ import RHelmet from "../components/Helmet";
 const UserProfile = () => {
   window.scrollTo(0, 0);
   const { id } = useParams();
-  const { data } = useGetUserQuery(id);
+  const navigate = useNavigate();
+  const { data, error } = useGetUserQuery(id);
   const { data: userBlogs } = useGetUserBlogsQuery(id);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
@@ -16,6 +17,9 @@ const UserProfile = () => {
       setBlogs(userBlogs.blogs);
     }
   }, [userBlogs]);
+  if(error){
+    navigate("/404");
+  }
 
   return (
     <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center">

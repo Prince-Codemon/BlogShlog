@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import RHelmet from "../components/Helmet";
 import BlogSkelton from "../components/BlogSkelton";
 import { useGetBlogQuery } from "../store/services/blogService";
-import { useGetUserFunctionMutation } from "../store/services/userService";
 import formatDate from "../utils/date";
 import Editor from "../components/Editor";
 import { WhatsappShareButton, WhatsappIcon, 
@@ -13,17 +12,13 @@ import { WhatsappShareButton, WhatsappIcon,
 const Blog = () => {
   window.scrollTo(0, 0);
   const { id } = useParams();
-  const { data, isFetching } = useGetBlogQuery(id);
+  const navigate = useNavigate()
+  const { data, isFetching, error } = useGetBlogQuery(id);
   const { title, content, image, createdAt, creator, desc } = data?.blog || {};
-  const [getUser, result] = useGetUserFunctionMutation();
-  const { data: userData } = result;
-
-  useEffect(() => {
-    if (creator) {
-      getUser(creator);
-    }
-  }, [data?.blog, creator, getUser]);
-
+  if(error){
+    navigate("/404");
+  }
+  
   return (
     <section className="text-gray-600 body-font">
       {title && (
@@ -31,7 +26,7 @@ const Blog = () => {
           title={title}
           content={desc}
           image={image}
-          creator={userData?.user?.username}
+          creator={creator?.username}
         />
       )}
       {isFetching ? (
@@ -46,16 +41,16 @@ const Blog = () => {
           />
           <div className="w-full md:w-2/3 flex flex-col mb-16 blog ">
             <div className="w-full flex justify-between items-center">
-              {userData?.user && (
-                <Link to={`/user/${creator}`}>
+              {creator && (
+                <Link to={`/user/${creator?._id}`}>
                   <img
                     className="w-10 h-10 rounded-sm shadow-md"
-                    src={userData?.user?.profile}
-                    alt={userData?.user?.username}
+                    src={creator?.profile}
+                    alt={creator?.username}
                   />
 
                   <h2 className="text-sm text-indigo-500 tracking-widest font-medium title-font mb-1 capitalize">
-                    {userData?.user?.username}
+                    {creator?.username}
                   </h2>
                 </Link>
               )}
