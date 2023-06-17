@@ -42,9 +42,9 @@ const Login = () => {
 
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font ">
       <RHelmet title="Login" />
-      <div className="container px-3 md:px-5 mx-auto flex items-center justify-center my-20">
+      <div className="container px-3 md:px-5 mx-auto flex items-center justify-center bg-white py-20">
         <form
           onSubmit={handleSubmit}
           className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg px-3 py-4 md:p-8 flex flex-col  w-full mt-10 md:mt-0 "

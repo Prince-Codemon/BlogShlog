@@ -21,7 +21,7 @@ const Profile = () => {
     
 
   return (
-    <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center min-h-[70vh]">
+    <div className="flex flex-col items-center justify-center bg-white py-10 gap-9 px-4 md:px-14 text-center min-h-[70vh]">
       <RHelmet title="Profile" />
       <div className="w-full md:max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
       {

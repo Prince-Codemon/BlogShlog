@@ -53,7 +53,7 @@ const Blogs = () => {
     }
     />
     
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font bg-white">
         <div className="container px-5 py-24 pt-10 mx-auto">
           <div className="flex items-start md:items-center gap-2 md:gap-0 justify-between py-4 bg-gray-900 p-2  flex-col md:flex-row">
             <label htmlFor="table-search" className="sr-only">

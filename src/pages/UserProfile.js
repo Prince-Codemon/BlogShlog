@@ -22,7 +22,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center  py-10 gap-9 px-4 md:px-14 text-center">
+    <div className="flex flex-col items-center justify-center bg-white py-10 gap-9 px-4 md:px-14 text-center">
       <RHelmet title={data?.user?.username} />
       <div className="w-full max-w-sm bg-white border border-gray-600 rounded-lg shadow-md ">
         {data?.user ? (

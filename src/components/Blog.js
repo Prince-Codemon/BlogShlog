@@ -6,7 +6,7 @@ const Blog = ({ blog }) => {
   const { category, createdAt, title, desc, views:blogView, _id, image } = blog;
   return (
     <Link to={`/blog/${_id}`} className="p-4 md:w-1/3 flex-grow">
-      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+      <div className="h-full border-2 bg-white border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <img
           className="lg:h-48 md:h-36 w-full object-cover object-center"
           src={image}
@@ -24,6 +24,7 @@ const Blog = ({ blog }) => {
           <div className="flex items-center flex-wrap mt-auto">
             <Link
               to={`/blog/${_id}`}
+              aria-label="Read More"
               className=" bg-indigo-600 text-white rounded-sm px-4 py-1 hover:bg-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 mb-2"
             >
               Read More
