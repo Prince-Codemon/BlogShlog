@@ -10,7 +10,7 @@ const Footer = () => {
             BlogShlog
           </span>
         </Link>
-        <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
+        <ul className="flex flex-wrap items-center mb-6 text-sm  sm:mb-0 text-gray-400">
           <li>
             <Link to={"/"} className="mr-4 hover:underline md:mr-6 ">
               Home
@@ -48,8 +48,8 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+      <hr className="my-6  sm:mx-auto border-gray-700 lg:my-8" />
+      <span className="block text-sm  sm:text-center text-gray-400">
         © 2023{" "}
         <Link to={"/"} className="hover:underline">
           BlogShlog

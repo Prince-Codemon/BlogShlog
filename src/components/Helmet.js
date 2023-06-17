@@ -10,6 +10,11 @@ const RHelmet = ({ title, content, image, creator }) => {
       {image && <meta property="og:image" content={image} />}
       {creator && <meta property="og:creator" content={creator} />}
       {creator && <meta name="author" content={creator} />}
+      <meta charset="UTF-8"/>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      {/* <meta http-equiv="X-UA-Compatible" content="ie=edge" /> */}
+      <meta name="robots" content="index, follow" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={content} />

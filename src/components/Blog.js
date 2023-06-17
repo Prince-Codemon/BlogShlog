@@ -20,8 +20,8 @@ const Blog = ({ blog }) => {
           <h1 className="title-font text-lg font-medium text-gray-900 mb-3 capitalize">
             {title}
           </h1>
-          <p className="leading-relaxed mb-3 text-xs md:text-sm ">{desc}</p>
-          <div className="flex items-center flex-wrap ">
+          <p className="leading-relaxed mb-3 text-xs md:text-sm ">{desc.slice(0, 100)+"..."}</p>
+          <div className="flex items-center flex-wrap mt-auto">
             <Link
               to={`/blog/${_id}`}
               className=" bg-indigo-600 text-white rounded-sm px-4 py-1 hover:bg-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 mb-2"
