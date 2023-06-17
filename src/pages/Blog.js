@@ -32,7 +32,7 @@ const Blog = () => {
       {isFetching ? (
         <BlogSkelton />
       ) : (
-        <div className="container mx-auto flex flex-col px-5 py-20 justify-center items-center">
+        <div className="container mx-auto bg-white flex flex-col px-5 py-20 justify-center items-center">
           <img
             className="lg:w-2/3 md:w-10/12 w-full aspect-video mb-10 object-cover object-center rounded"
             alt={title}
