@@ -7,25 +7,81 @@
       "src": "logo.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon",
-      "purpose":"any"
+      "purpose": "any"
     },
     {
       "src": "logo.png",
       "type": "image/png",
       "sizes": "144x144",
-      "purpose":"any"
+      "purpose": "any"
     },
     {
       "src": "logo.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose":"maskable"
+      "purpose": "maskable"
     },
     {
       "src": "logo.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Explore",
+      "url": "/",
+      "icons": [
+        {
+          "src": "./icons/1.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Create Blog",
+      "url": "/creator/createblog",
+      "icons": [
+        {
+          "src": "./icons/2.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "url": "/user/profile",
+      "icons": [
+        {
+          "src": "./icons/3.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "name": "BlogShlog",
+    "url": "https://blogshlog.netlify.app"
+  },
+  "screenshots": [
+    {
+      "src": "./screenshot/1.png",
+      "sizes": "586x1041",
+      "type": "image/png"
+    },
+    {
+      "src": "./screenshot/2.png",
+      "sizes": "586x1041",
+      "type": "image/png"
+    },
+    {
+      "src": "./screenshot/3.png",
+      "sizes": "586x1041",
+      "type": "image/png"
     }
   ],
   "id": "/",
