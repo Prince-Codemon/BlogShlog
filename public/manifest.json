@@ -63,28 +63,6 @@
       ]
     }
   ],
-  "share_target": {
-    "action": "/",
-    "enctype": "multipart/form-data",
-    "method": "POST",
-    "params": {
-      "title": "title",
-      "desc": "desc",
-      "url": "url",
-      "files": [
-        {
-          "name": "externalMedia",
-          "accept": [
-            "image/jpeg",
-            "image/png",
-            "image/gif",
-            "video/quicktime",
-            "video/mp4"
-          ]
-        }
-      ]
-    }
-  },
   "screenshots": [
     {
       "src": "./screenshot/1.png",
