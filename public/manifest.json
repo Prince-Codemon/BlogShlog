@@ -36,7 +36,7 @@
         {
           "src": "./icons/1.png",
           "type": "image/png",
-          "sizes": "192x192"
+          "sizes": "750x750"
         }
       ]
     },
@@ -47,7 +47,7 @@
         {
           "src": "./icons/2.png",
           "type": "image/png",
-          "sizes": "192x192"
+          "sizes": "750x750"
         }
       ]
     },
@@ -58,29 +58,47 @@
         {
           "src": "./icons/3.png",
           "type": "image/png",
-          "sizes": "192x192"
+          "sizes": "750x750"
         }
       ]
     }
   ],
   "share_target": {
-    "name": "BlogShlog",
-    "url": "https://blogshlog.netlify.app"
+    "action": "/",
+    "enctype": "multipart/form-data",
+    "method": "POST",
+    "params": {
+      "title": "title",
+      "desc": "desc",
+      "url": "url",
+      "files": [
+        {
+          "name": "externalMedia",
+          "accept": [
+            "image/jpeg",
+            "image/png",
+            "image/gif",
+            "video/quicktime",
+            "video/mp4"
+          ]
+        }
+      ]
+    }
   },
   "screenshots": [
     {
       "src": "./screenshot/1.png",
-      "sizes": "586x1041",
+      "sizes": "2381x3368",
       "type": "image/png"
     },
     {
       "src": "./screenshot/2.png",
-      "sizes": "586x1041",
+      "sizes": "2381x3368",
       "type": "image/png"
     },
     {
       "src": "./screenshot/3.png",
-      "sizes": "586x1041",
+      "sizes": "2381x3368",
       "type": "image/png"
     }
   ],
