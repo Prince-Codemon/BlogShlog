@@ -18,6 +18,7 @@ this.addEventListener("install", (event) => {
         "/static/media/logo.97567b1efc35069a48d7.png",
         "/user/profile",
         "/user/manifest.json",
+        "/404"
       ]);
     })
   );

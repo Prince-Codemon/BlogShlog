@@ -74,8 +74,16 @@ function App() {
           }
         />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/blog/:id" pr element={<Blog />} />
-        <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="/blog/:id" pr element={
+          <OfflineMode>
+            <Blog />
+          </OfflineMode>
+        } />
+        <Route path="/user/:id" element={
+          <OfflineMode>
+            <UserProfile />
+          </OfflineMode>
+        } />
         {/* auth routes */}
         <Route path="/auth">
           <Route
@@ -119,7 +127,9 @@ function App() {
             path="profile"
             element={
               <User>
+                <OfflineMode>
                 <Profile />{" "}
+                </OfflineMode>
               </User>
             }
           />
@@ -127,7 +137,9 @@ function App() {
             path="editprofile"
             element={
               <User>
+                <OfflineMode>
                 <EditProfile />{" "}
+                </OfflineMode>
               </User>
             }
           />
