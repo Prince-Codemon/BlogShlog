@@ -39,11 +39,12 @@ const Login = () => {
        toast.error(error.data.msg);
     }
   }, [data, error, navigate, dispatch]);
+  
 
 
   return (
     <section className="text-gray-600 body-font ">
-      <RHelmet title="Login" />
+      <RHelmet title="Login : BlogShlog Account" content={'Login to your account '} />
       <div className="container px-3 md:px-5 mx-auto flex items-center justify-center bg-white py-20">
         <form
           onSubmit={handleSubmit}

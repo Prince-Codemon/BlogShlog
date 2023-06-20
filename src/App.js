@@ -27,6 +27,7 @@ import RHelmet from "./components/Helmet";
 import AIBlog from "./pages/AIBlog";
 import Sitemap from "./Sitemap";
 import Faq from "./pages/Faq";
+import OfflineMode from "./components/OfflineMode";
 function App() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -51,7 +52,7 @@ function App() {
     <>
       <RHelmet title="Home" />
       <Navbar />
-      <ToastContainer 
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -61,12 +62,18 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        
       />
       <Routes>
         {/* public routes */}
-        <Route path="/" element={<Blogs />} />
-        <Route path="/faq" element={<Faq/>}/>
+        <Route
+          path="/"
+          element={
+            <OfflineMode>
+              <Blogs />
+            </OfflineMode>
+          }
+        />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/blog/:id" pr element={<Blog />} />
         <Route path="/user/:id" element={<UserProfile />} />
         {/* auth routes */}
@@ -159,7 +166,6 @@ function App() {
         {/* not found page */}
 
         <Route path="*" element={<NFPage />} />
-
       </Routes>
       <Footer />
     </>

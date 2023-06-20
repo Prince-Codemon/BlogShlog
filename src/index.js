@@ -6,6 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { store } from './store/store';
 import {Provider} from 'react-redux'
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+import serviceWorker from './serviceWorker';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 disableReactDevTools();
@@ -19,7 +20,7 @@ root.render(
   </>
 );
 
-
+serviceWorker();
 // const rootElement = document.getElementById('root')
 // if (rootElement.hasChildNodes()) {
 //   hydrate(<App />, rootElement)

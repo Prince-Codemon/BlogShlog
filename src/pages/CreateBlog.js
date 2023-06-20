@@ -76,7 +76,7 @@ const CreateBlog = () => {
 
   return (
     <section className="flex  items-start justify-start flex-col md:flex-row py-10 px-2 md:px-20">
-      <RHelmet title="Create Blog" />
+      <RHelmet title="Create Blog : BlogShlog" content={'Create a Blog on blogshlog to express your thoughts and ideas. '} />
       <div className="flex md:w-1/2 w-full  flex-col items-start justify-start my-5 ">
         <h1 className="text-base bg-indigo-500 p-2 rounded text-white text-center mb-2">
           Write Content
