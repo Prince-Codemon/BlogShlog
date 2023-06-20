@@ -4,10 +4,10 @@ export default function serviceWorker() {
       navigator.serviceWorker
         .register("/sw.js")
         .then(function (registration) {
-          console.log("Registration successful, scope is:", registration.scope);
+          console.info("Service worker registration successful");
         })
         .catch(function (error) {
-          console.warn("Service worker registration failed, error:");
+          console.warn("Service worker registration failed");
         });
     }
   }
